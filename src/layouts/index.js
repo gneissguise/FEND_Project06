@@ -146,7 +146,7 @@ class Layout extends React.Component {
         <div className='flex-container'>
           {/* List of books to be read */}
           <div className='book-list-wrapper'>
-            <div><h2>{BookLists.toReadList.heading}</h2></div>
+            <header><h2>{BookLists.toReadList.heading}</h2></header>
             <Droppable droppableId={BookLists.toReadList.id}>
               {(provided, snapshot) => (
                 <div className='book-list'
@@ -179,7 +179,7 @@ class Layout extends React.Component {
 
           {/* List of books currently being read */}
           <div className='book-list-wrapper'>
-            <div><h2>{BookLists.readingList.heading}</h2></div>
+            <header><h2>{BookLists.readingList.heading}</h2></header>
             <Droppable droppableId={BookLists.readingList.id}>
               {(provided, snapshot) => (
                 <div className='book-list'
@@ -212,7 +212,7 @@ class Layout extends React.Component {
 
           {/* List of books that have been read */}
           <div className='book-list-wrapper'>
-            <div><h2>{BookLists.readList.heading}</h2></div>
+            <header><h2>{BookLists.readList.heading}</h2></header>
             <Droppable droppableId={BookLists.readList.id}>
               {(provided, snapshot) => (
                 <div className='book-list'
