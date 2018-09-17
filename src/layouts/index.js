@@ -2,6 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
+import { concat, compose, equals, filter, map, not, take, takeLast, unnest } from 'ramda'
+import { mergeProp } from 'ramda-adjunct'
 
 import Header from '../components/header'
 import Bookshelf from '../components/bookshelf'
@@ -12,18 +14,15 @@ import './index.css'
 
 // List names
 const BookLists = {
-    toReadList: { id: 'toReadList', order: 0, heading: 'To Be Read' },
-    readingList: { id: 'readingList', order: 1, heading: 'Currently Reading' },
-    readList: { id: 'readList', order: 2, heading: 'Done Reading' }
+    toReadList: { id: 'toReadList', heading: 'To Be Read' },
+    readingList: { id: 'readingList', heading: 'Currently Reading' },
+    readList: { id: 'readList', heading: 'Done Reading' }
 }
 
 // List filters
 const bookToRead = (book) => book.status.id === BookLists.toReadList.id
 const bookReading = (book) => book.status.id === BookLists.readingList.id
 const bookRead = (book) => book.status.id === BookLists.readList.id
-
-// List sort
-const bookSort = (a, b) => (a.status.order - b.status.order || a.order - b.order)
 
 class Layout extends React.Component {
   constructor(props) {
@@ -32,7 +31,6 @@ class Layout extends React.Component {
     this.state = {
       books: [
         {
-          order: 0,
           id: 'to-kill-a-mockingbird',
           title: 'To Kill A Mockingbird',
           author: 'Harper Lee',
@@ -42,7 +40,6 @@ class Layout extends React.Component {
           img: { url: '', alt: '' }
         },
         {
-          order: 1,
           id: 'slaugherhouse-five',
           title: 'Slaughterhouse Five',
           author: 'Kurt Vonnegut',
@@ -52,7 +49,6 @@ class Layout extends React.Component {
           img: { url: '', alt: '' }
         },
         {
-          order: 2,
           id: 'the-lord-of-the-rings',
           title: 'The Lord of the Rings',
           author: 'Tolkein',
@@ -68,32 +64,61 @@ class Layout extends React.Component {
     this.onDragEnd = this.onDragEnd.bind(this);
   }
 
+  // onDragEnd() is called when the list item's dragging event is complete.
+  // Please note: most of the code in this method uses functions from
+  // the Ramda.js library as I felt the functional composition
+  // complimented react quite nicely!
   onDragEnd = (result) => {
+    // If dragged outside of area, then return false
     if (!result.destination) {
       return false;
     }
 
-    console.log(result);
+    // Capturing draggable properties to local vars for brevity
+    const destId = result.destination.droppableId
+    const destIndex = result.destination.index
 
-    const books = this.state.books.map((book) => {
-      if (book.id === result.draggableId) {
-        return (
-          {
-            order: result.destination.index,
-            id: book.id,
-            title: book.title,
-            author: book.author,
-            description: book.description,
-            rating: book.rating,
-            status: BookLists[result.destination.droppableId],
-            img: book.img
-          }
-        )
-      }
-      else {
-        return book
-      }
-    }).sort(bookSort)
+    // Capturing book list ids to local vars for brevity
+    const toReadListId = BookLists.toReadList.id
+    const readingListId = BookLists.readingList.id
+    const readListId = BookLists.readList.id
+
+    // Comparison function to match the dragged book
+    const bookMatch = book => equals(book.id, result.draggableId)
+
+    // The book currently being dragged
+    const selectedBook = filter(bookMatch, this.state.books)
+
+    // Filtering out selected book from book list
+    const filteredBookList = filter(compose(not, bookMatch), this.state.books)
+
+    // Separating out books into their category lists to help with reordering
+    const booksToRead = filter(bookToRead, filteredBookList)
+    const booksReading = filter(bookReading, filteredBookList)
+    const booksRead = filter(bookRead, filteredBookList)
+
+    // These slice functions will create two halves of lists at a given index
+    const sliceFirst = (i, list) => take(i, list)
+    const sliceLast = (i, list) => takeLast(list.length - i, list)
+
+    // Inject the transformed selectedBook if the destination id
+    // of the draggable item (book) matches the list's id
+    const condInject = (listId, list) => {
+      return equals(destId, listId) ?
+        unnest([
+          sliceFirst(destIndex, list),
+          map(mergeProp('status', BookLists[destId]), selectedBook),
+          sliceLast(destIndex, list)
+        ]) :
+        list
+    }
+
+    // Rejoin all of the lists in order!
+    const books = unnest([
+      condInject(toReadListId, booksToRead),
+      condInject(readingListId, booksReading),
+      condInject(readListId, booksRead)
+    ])
 
     this.setState({
       books

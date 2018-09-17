@@ -16,7 +16,7 @@
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "d0e7a2b2a5c2b0c59bf3d1fd5a6a4827",
+        "contentDigest": "dcfd5d2fb7305d358434cd3e9b3ec46c",
         "description": "Plugin dev-404-page",
         "owner": "internal-data-bridge"
       }
@@ -328,6 +328,10 @@
             "version": "^1.13.7"
           },
           {
+            "name": "ramda",
+            "version": "^0.25.0"
+          },
+          {
             "name": "react",
             "version": "^16.3.1"
           },
@@ -442,12 +446,12 @@
       "host": "localhost",
       "pathPrefix": "",
       "polyfill": true,
-      "buildTime": "2018-09-16T01:25:25.692Z",
+      "buildTime": "2018-09-16T23:22:27.327Z",
       "id": "Site",
       "parent": "SOURCE",
       "children": [],
       "internal": {
-        "contentDigest": "15fb4f1e094a4f8e03cd0be18f393fd5",
+        "contentDigest": "90fc61e86799caef8aaca5d9b1813534",
         "type": "Site",
         "owner": "internal-data-bridge"
       }
@@ -468,7 +472,7 @@
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "6902149e7d75a19eb9c3cedd9a2f472d",
+        "contentDigest": "32ba61d5f8f0c9e8073a781571d24406",
         "description": "Plugin gatsby-plugin-page-creator",
         "owner": "internal-data-bridge"
       }
@@ -489,7 +493,7 @@
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "a49b8dfefd173d8b2bef3554a4fe276d",
+        "contentDigest": "df989e09f5bf74476f819ebbb2f75044",
         "description": "Plugin gatsby-plugin-page-creator",
         "owner": "internal-data-bridge"
       }
@@ -510,7 +514,7 @@
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "cd00202bc4fda1098f045e8ebc58dcb9",
+        "contentDigest": "b321081deb456e6fba4ff96ea6218e74",
         "description": "Plugin prod-404",
         "owner": "internal-data-bridge"
       }
@@ -518,7 +522,7 @@
   },
   "status": {
     "plugins": {},
-    "PLUGINS_HASH": "cc89dcb58853de293a5d86096c1fda4a"
+    "PLUGINS_HASH": "9bf66428c2eb8d51c6497b8ed6722166"
   },
   "componentDataDependencies": {
     "nodes": {
