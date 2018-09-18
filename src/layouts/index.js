@@ -6,8 +6,7 @@ import { concat, compose, equals, filter, map, not, take, takeLast, unnest } fro
 import { mergeProp } from 'ramda-adjunct'
 
 import Header from '../components/header'
-import Bookshelf from '../components/bookshelf'
-import Shelf from '../components/shelf'
+import BookList from '../components/booklist'
 import Book from '../components/book'
 import Search from '../components/search'
 import './index.css'
@@ -145,108 +144,26 @@ class Layout extends React.Component {
 
         <div className='flex-container'>
           {/* List of books to be read */}
-          <div className='book-list-wrapper'>
-            <header><h2>{BookLists.toReadList.heading}</h2></header>
-            <Droppable droppableId={BookLists.toReadList.id}>
-              {(provided, snapshot) => (
-                <div className='book-list'
-                  ref={provided.innerRef}
-                  {...provided.droppableProps}>
-
-                  {this.state.books
-                    .filter(bookToRead)
-                    .map((book, index) => (
-                      <Draggable draggableId={book.id} index={index} key={book.id}>
-                        {(provided, snapshot) => (
-                          <div
-                            className='book'
-                            ref={provided.innerRef}
-                            {...provided.draggableProps}
-                            {...provided.dragHandleProps}
-                            key={book.id}>
-                            <h4>{book.title}</h4>
-                            <p>index: {index}</p>
-                            <p>id: {book.id}</p>
-                          </div>
-                        )}
-                      </Draggable>
-                    ))}
-                  {provided.placeholder}
-                </div>
-              )}
-            </Droppable>
-          </div>
+          <BookList heading={BookLists.toReadList.heading}
+            id={BookLists.toReadList.id}
+            books={this.state.books}
+            filter={bookToRead}></BookList>
 
           {/* List of books currently being read */}
-          <div className='book-list-wrapper'>
-            <header><h2>{BookLists.readingList.heading}</h2></header>
-            <Droppable droppableId={BookLists.readingList.id}>
-              {(provided, snapshot) => (
-                <div className='book-list'
-                  ref={provided.innerRef}
-                  {...provided.droppableProps}>
-
-                  {this.state.books
-                    .filter(bookReading)
-                    .map((book, index) => (
-                      <Draggable draggableId={book.id} index={index} key={book.id}>
-                        {(provided, snapshot) => (
-                          <div
-                            className='book'
-                            ref={provided.innerRef}
-                            {...provided.draggableProps}
-                            {...provided.dragHandleProps}
-                            key={book.id}>
-                            <h4>{book.title}</h4>
-                            <p>index: {index}</p>
-                            <p>id: {book.id}</p>
-                          </div>
-                        )}
-                      </Draggable>
-                    ))}
-                    {provided.placeholder}
-                  </div>
-              )}
-            </Droppable>
-          </div>
+          <BookList heading={BookLists.readingList.heading}
+            id={BookLists.readingList.id}
+            books={this.state.books}
+            filter={bookReading}></BookList>
 
           {/* List of books that have been read */}
-          <div className='book-list-wrapper'>
-            <header><h2>{BookLists.readList.heading}</h2></header>
-            <Droppable droppableId={BookLists.readList.id}>
-              {(provided, snapshot) => (
-                <div className='book-list'
-                  ref={provided.innerRef}
-                  {...provided.droppableProps}>
-
-                  {this.state.books
-                    .filter(bookRead)
-                    .map((book, index) => (
-                      <Draggable draggableId={book.id} index={index} key={book.id}>
-                        {(provided, snapshot) => (
-                          <div
-                            className='book'
-                            ref={provided.innerRef}
-                            {...provided.draggableProps}
-                            {...provided.dragHandleProps}
-                            key={book.id}>
-                            <h4>{book.title}</h4>
-                            <p>index: {index}</p>
-                            <p>id: {book.id}</p>
-                          </div>
-                        )}
-                      </Draggable>
-                  ))}
-                  {provided.placeholder}
-                  </div>
-              )}
-            </Droppable>
-          </div>
+          <BookList heading={BookLists.readList.heading}
+            id={BookLists.readList.id}
+            books={this.state.books}
+            filter={bookRead}></BookList>
         </div>
 
         {/* Leave props.children() here, this is passed from the page. */}
         {this.props.children()}
-
       </DragDropContext>)
   }
 }

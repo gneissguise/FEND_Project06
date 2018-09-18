@@ -16,7 +16,7 @@
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "dcfd5d2fb7305d358434cd3e9b3ec46c",
+        "contentDigest": "0ad33157d375a4fdabab913d7855b136",
         "description": "Plugin dev-404-page",
         "owner": "internal-data-bridge"
       }
@@ -332,6 +332,10 @@
             "version": "^0.25.0"
           },
           {
+            "name": "ramda-adjunct",
+            "version": "^2.10.0"
+          },
+          {
             "name": "react",
             "version": "^16.3.1"
           },
@@ -446,12 +450,12 @@
       "host": "localhost",
       "pathPrefix": "",
       "polyfill": true,
-      "buildTime": "2018-09-16T23:22:27.327Z",
+      "buildTime": "2018-09-18T02:59:32.302Z",
       "id": "Site",
       "parent": "SOURCE",
       "children": [],
       "internal": {
-        "contentDigest": "90fc61e86799caef8aaca5d9b1813534",
+        "contentDigest": "cb68072e8a9afbc97e53d1ca783a9542",
         "type": "Site",
         "owner": "internal-data-bridge"
       }
@@ -472,7 +476,7 @@
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "32ba61d5f8f0c9e8073a781571d24406",
+        "contentDigest": "347ddc7588a322bcaf841b23f784807b",
         "description": "Plugin gatsby-plugin-page-creator",
         "owner": "internal-data-bridge"
       }
@@ -493,7 +497,7 @@
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "df989e09f5bf74476f819ebbb2f75044",
+        "contentDigest": "a3a2bed17f6a044c68a92a002a33711a",
         "description": "Plugin gatsby-plugin-page-creator",
         "owner": "internal-data-bridge"
       }
@@ -514,7 +518,7 @@
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "b321081deb456e6fba4ff96ea6218e74",
+        "contentDigest": "44c5a26bcff57b1f1f9eca78da96046f",
         "description": "Plugin prod-404",
         "owner": "internal-data-bridge"
       }
@@ -522,7 +526,7 @@
   },
   "status": {
     "plugins": {},
-    "PLUGINS_HASH": "9bf66428c2eb8d51c6497b8ed6722166"
+    "PLUGINS_HASH": "c75a9ed1d234839fadcc0c21d7c61b7a"
   },
   "componentDataDependencies": {
     "nodes": {
