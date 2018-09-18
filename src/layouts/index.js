@@ -123,14 +123,18 @@ class Layout extends React.Component {
     })
   }
 
-  addBook = (books, book) => {
-    return unnest([
-      // filter()
-    ])
+  addBook = (book) => {
+    const books = concat(this.state.books, Array.of(book))
+    this.setState ({
+      books
+    })
   }
 
-  deleteBook = () => {
-
+  deleteBook = (book) => {
+    const books = this.state.books.filter(b => b.id === book.id)
+    this.setState ({
+      books
+    })
   }
 
   render() {
@@ -157,7 +161,8 @@ class Layout extends React.Component {
                     id={BookLists.toReadList.id}
                     books={this.state.books}
                     filter={bookToRead}
-                    addBook={this.addBook.bind(this)}>
+                    addBook={this.addBook.bind(this)}
+                    deleteBook={this.deleteBook.bind(this)}>
           </BookList>
 
           {/* List of books currently being read */}
@@ -165,7 +170,8 @@ class Layout extends React.Component {
                     id={BookLists.readingList.id}
                     books={this.state.books}
                     filter={bookReading}
-                    addBook={this.addBook.bind(this)}>
+                    addBook={this.addBook.bind(this)}
+                    deleteBook={this.deleteBook.bind(this)}>
           </BookList>
 
           {/* List of books that have been read */}
@@ -173,7 +179,8 @@ class Layout extends React.Component {
                     id={BookLists.readList.id}
                     books={this.state.books}
                     filter={bookRead}
-                    addBook={this.addBook.bind(this)}>
+                    addBook={this.addBook.bind(this)}
+                    deleteBook={this.deleteBook.bind(this)}>
           </BookList>
         </div>
 
