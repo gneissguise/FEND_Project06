@@ -7,7 +7,6 @@ import { mergeProp } from 'ramda-adjunct'
 
 import Header from '../components/header'
 import BookList from '../components/booklist'
-import Book from '../components/book'
 import Search from '../components/search'
 import './index.css'
 
@@ -124,6 +123,16 @@ class Layout extends React.Component {
     })
   }
 
+  addBook = (books, book) => {
+    return unnest([
+      // filter()
+    ])
+  }
+
+  deleteBook = () => {
+
+  }
+
   render() {
     console.log(this.state)
     return (
@@ -145,21 +154,27 @@ class Layout extends React.Component {
         <div className='flex-container'>
           {/* List of books to be read */}
           <BookList heading={BookLists.toReadList.heading}
-            id={BookLists.toReadList.id}
-            books={this.state.books}
-            filter={bookToRead}></BookList>
+                    id={BookLists.toReadList.id}
+                    books={this.state.books}
+                    filter={bookToRead}
+                    addBook={this.addBook.bind(this)}>
+          </BookList>
 
           {/* List of books currently being read */}
           <BookList heading={BookLists.readingList.heading}
-            id={BookLists.readingList.id}
-            books={this.state.books}
-            filter={bookReading}></BookList>
+                    id={BookLists.readingList.id}
+                    books={this.state.books}
+                    filter={bookReading}
+                    addBook={this.addBook.bind(this)}>
+          </BookList>
 
           {/* List of books that have been read */}
           <BookList heading={BookLists.readList.heading}
-            id={BookLists.readList.id}
-            books={this.state.books}
-            filter={bookRead}></BookList>
+                    id={BookLists.readList.id}
+                    books={this.state.books}
+                    filter={bookRead}
+                    addBook={this.addBook.bind(this)}>
+          </BookList>
         </div>
 
         {/* Leave props.children() here, this is passed from the page. */}

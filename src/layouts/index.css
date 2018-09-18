@@ -625,14 +625,16 @@ div.book-list-wrapper {
   flex-grow: 1;
   width: 33.333%;
   background-color: lavender;
+  background: linear-gradient(to bottom, #e6e6fa 0%, #fffafa 100%);
   border-radius: 0.25rem;
   margin: 0.5rem;
-  /* padding: 0 0.5rem 0 0.5rem; */
+  border-bottom: 1px solid #ddd;
 }
 div.book-list-wrapper > header {
   padding: 1.25rem 0 1.25rem 0;
   text-align: center;
   background-color: thistle;
+  background: linear-gradient(to bottom, #d8bfd8 0%, 	#cdb5cd 100);
   border-top-left-radius: 0.25rem;
   border-top-right-radius: 0.25rem;
 }
