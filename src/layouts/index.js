@@ -60,6 +60,8 @@ class Layout extends React.Component {
 
     // Binding 'this' scope onto class properties
     this.onDragEnd = this.onDragEnd.bind(this);
+    this.addBook = this.addBook.bind(this);
+    this.deleteBook = this.deleteBook.bind(this);
   }
 
   // onDragEnd() is called when the list item's dragging event is complete.
@@ -131,7 +133,7 @@ class Layout extends React.Component {
   }
 
   deleteBook = (book) => {
-    const books = this.state.books.filter(b => b.id === book.id)
+    const books = this.state.books.filter(b => b.id !== book.id)
     this.setState ({
       books
     })
@@ -161,8 +163,8 @@ class Layout extends React.Component {
                     id={BookLists.toReadList.id}
                     books={this.state.books}
                     filter={bookToRead}
-                    addBook={this.addBook.bind(this)}
-                    deleteBook={this.deleteBook.bind(this)}>
+                    addBook={this.addBook}
+                    deleteBook={this.deleteBook}>
           </BookList>
 
           {/* List of books currently being read */}
@@ -170,8 +172,8 @@ class Layout extends React.Component {
                     id={BookLists.readingList.id}
                     books={this.state.books}
                     filter={bookReading}
-                    addBook={this.addBook.bind(this)}
-                    deleteBook={this.deleteBook.bind(this)}>
+                    addBook={this.addBook}
+                    deleteBook={this.deleteBook}>
           </BookList>
 
           {/* List of books that have been read */}
@@ -179,8 +181,8 @@ class Layout extends React.Component {
                     id={BookLists.readList.id}
                     books={this.state.books}
                     filter={bookRead}
-                    addBook={this.addBook.bind(this)}
-                    deleteBook={this.deleteBook.bind(this)}>
+                    addBook={this.addBook}
+                    deleteBook={this.deleteBook}>
           </BookList>
         </div>
 

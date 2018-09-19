@@ -8,4 +8,3 @@
 * Book editor
 * Rating system
 * possibly a sorting/filtering (genre / rating)
-* delete book
