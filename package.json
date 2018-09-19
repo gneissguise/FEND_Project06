@@ -4,11 +4,14 @@
   "version": "1.0.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
+    "@material-ui/core": "^3.1.0",
+    "@material-ui/icons": "^3.0.1",
     "gatsby": "^1.9.277",
     "gatsby-link": "^1.6.46",
     "gatsby-plugin-react-helmet": "^2.0.11",
     "react-beautiful-dnd": "^9.0.2",
-    "react-helmet": "^5.2.0"
+    "react-helmet": "^5.2.0",
+    "typeface-roboto": "0.0.54"
   },
   "keywords": [
     "gatsby"
@@ -21,6 +24,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
+    "gatsby-cli": "^2.4.1",
     "prettier": "^1.13.7",
     "ramda": "^0.25.0",
     "ramda-adjunct": "^2.10.0",

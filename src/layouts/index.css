@@ -1,5 +1,5 @@
 html {
-  font-family: sans-serif;
+  font-family: Roboto sans-serif;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
 }
@@ -183,7 +183,7 @@ textarea {
   font: inherit;
 }
 html {
-  font: 112.5%/1.45em georgia, serif;
+  font: 112.5%/1.45em Roboto, serif;
   box-sizing: border-box;
   overflow-y: scroll;
 }
@@ -198,7 +198,7 @@ html {
 }
 body {
   color: hsla(0, 0%, 0%, 0.8);
-  font-family: georgia, serif;
+  font-family: Roboto, serif;
   font-weight: normal;
   word-wrap: break-word;
   font-kerning: normal;
@@ -655,6 +655,7 @@ div.book {
   line-height: 1rem;
   margin: 0.25rem 0 0.25rem 0;
   padding: 0.25rem;
+  position: relative;
 }
 div.book h4 {
   font-size: 0.75rem;
@@ -663,6 +664,11 @@ div.book h4 {
 div.book p {
   font-size: 0.5rem;
   margin-bottom: 0;
+}
+div.book button {
+  position: absolute;
+  right: 0;
+  bottom: 0;
 }
 @media only screen and (max-width: 480px) {
   html {

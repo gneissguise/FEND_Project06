@@ -1,4 +1,6 @@
 import React from 'react'
+import IconButton from '@material-ui/core/IconButton'
+import DeleteIcon from '@material-ui/icons/Delete'
 
 class ActionButton extends React.Component {
   constructor(props) {
@@ -13,7 +15,9 @@ class ActionButton extends React.Component {
 
   render() {
     return (
-      <button onClick={this.handleClick}>{this.props.children}</button>
+      <IconButton onClick={this.handleClick} aria-label='Delete'>
+        <DeleteIcon />
+      </IconButton>
     )
   }
 }

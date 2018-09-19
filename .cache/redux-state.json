@@ -16,7 +16,7 @@
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "9f66dfffe7b3fd1e14f05d9e7d63cfab",
+        "contentDigest": "9ce7a377ec5dcfb767b35c60cbc3c2b1",
         "description": "Plugin dev-404-page",
         "owner": "internal-data-bridge"
       }
@@ -302,6 +302,14 @@
         "license": "MIT",
         "dependencies": [
           {
+            "name": "@material-ui/core",
+            "version": "^3.1.0"
+          },
+          {
+            "name": "@material-ui/icons",
+            "version": "^3.0.1"
+          },
+          {
             "name": "gatsby",
             "version": "^1.9.277"
           },
@@ -320,9 +328,17 @@
           {
             "name": "react-helmet",
             "version": "^5.2.0"
+          },
+          {
+            "name": "typeface-roboto",
+            "version": "0.0.54"
           }
         ],
         "devDependencies": [
+          {
+            "name": "gatsby-cli",
+            "version": "^2.4.1"
+          },
           {
             "name": "prettier",
             "version": "^1.13.7"
@@ -450,12 +466,12 @@
       "host": "localhost",
       "pathPrefix": "",
       "polyfill": true,
-      "buildTime": "2018-09-19T02:30:17.198Z",
+      "buildTime": "2018-09-19T07:31:26.642Z",
       "id": "Site",
       "parent": "SOURCE",
       "children": [],
       "internal": {
-        "contentDigest": "64b6167cd9d14f159f14857140f3509e",
+        "contentDigest": "f421e38ece4704306595b02f39eaca4a",
         "type": "Site",
         "owner": "internal-data-bridge"
       }
@@ -476,7 +492,7 @@
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "019a46c4dbc9322e45c89222bc6744f6",
+        "contentDigest": "895f99b233e3f8701b44f75e1c1e558a",
         "description": "Plugin gatsby-plugin-page-creator",
         "owner": "internal-data-bridge"
       }
@@ -497,7 +513,7 @@
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "b49c065f0e76e51c5cd898f32449b906",
+        "contentDigest": "5b62518cf33e205fb11ebebc9c001f4c",
         "description": "Plugin gatsby-plugin-page-creator",
         "owner": "internal-data-bridge"
       }
@@ -518,7 +534,7 @@
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "1ff24e2d8a5ecc74e43808834aae2d9e",
+        "contentDigest": "693b03dc8aa9cdf15c11f748e3d6ab0a",
         "description": "Plugin prod-404",
         "owner": "internal-data-bridge"
       }
@@ -526,7 +542,7 @@
   },
   "status": {
     "plugins": {},
-    "PLUGINS_HASH": "c75a9ed1d234839fadcc0c21d7c61b7a"
+    "PLUGINS_HASH": "4c43b2751d90c23dc75f9e2fa0269d47"
   },
   "componentDataDependencies": {
     "nodes": {
