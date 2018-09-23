@@ -1,5 +1,5 @@
 html {
-  font-family: Roboto sans-serif;
+  font-family: sans-serif;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
 }
@@ -183,7 +183,7 @@ textarea {
   font: inherit;
 }
 html {
-  font: 112.5%/1.45em Roboto, serif;
+  font: 112.5%/1.45em georgia, serif;
   box-sizing: border-box;
   overflow-y: scroll;
 }
@@ -198,7 +198,7 @@ html {
 }
 body {
   color: hsla(0, 0%, 0%, 0.8);
-  font-family: Roboto, serif;
+  font-family: georgia, serif;
   font-weight: normal;
   word-wrap: break-word;
   font-kerning: normal;
@@ -629,6 +629,7 @@ div.book-list-wrapper {
   border-radius: 0.25rem;
   margin: 0.5rem;
   border-bottom: 1px solid #ddd;
+  position: relative;
 }
 div.book-list-wrapper > header {
   padding: 1.25rem 0 1.25rem 0;
@@ -645,7 +646,7 @@ div.book-list-wrapper > header > h2 {
 }
 div.book-list {
   width: 100%;
-  height: calc(100% - 4.5rem);
+  height: calc(100% - 7.0rem);
   padding: 0.25rem;
 }
 div.book {
@@ -669,6 +670,19 @@ div.book button {
   position: absolute;
   right: 0;
   bottom: 0;
+}
+div[role="group"] {
+  margin: auto;
+  max-width: 960px;
+}
+div.add-button-container {
+  /* position: absolute;
+  bottom: 0; */
+  width: 100%;
+  text-align: center;
+}
+div.add-button-conntainer > button {
+
 }
 @media only screen and (max-width: 480px) {
   html {

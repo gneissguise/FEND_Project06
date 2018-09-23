@@ -1,8 +1,7 @@
 {
   "nodes": {
     "SitePage /dev-404-page/": {
-      "layout": "index",
-      "jsonName": "dev-404-page.json",
+      "jsonName": "dev-404-page-5f9",
       "internalComponentName": "ComponentDev404Page",
       "path": "/dev-404-page/",
       "component": "/home/justin/Documents/Udacity-Projects/front-end-nano/project_06/.cache/dev-404-page.js",
@@ -16,7 +15,7 @@
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "9ce7a377ec5dcfb767b35c60cbc3c2b1",
+        "contentDigest": "c69adc54befee78273bce4bdea103724",
         "description": "Plugin dev-404-page",
         "owner": "internal-data-bridge"
       }
@@ -56,29 +55,25 @@
         "owner": "internal-data-bridge"
       }
     },
-    "Plugin component-layout-creator": {
-      "resolve": "/home/justin/Documents/Udacity-Projects/front-end-nano/project_06/node_modules/gatsby/dist/internal-plugins/component-layout-creator",
-      "id": "Plugin component-layout-creator",
-      "name": "component-layout-creator",
+    "Plugin load-babel-config": {
+      "resolve": "/home/justin/Documents/Udacity-Projects/front-end-nano/project_06/node_modules/gatsby/dist/internal-plugins/load-babel-config",
+      "id": "Plugin load-babel-config",
+      "name": "load-babel-config",
       "version": "1.0.0",
       "pluginOptions": {
         "plugins": []
       },
       "nodeAPIs": [
-        "createLayouts"
+        "onPreBootstrap"
       ],
       "browserAPIs": [],
       "ssrAPIs": [],
-      "pluginFilepath": "/home/justin/Documents/Udacity-Projects/front-end-nano/project_06/node_modules/gatsby/dist/internal-plugins/component-layout-creator",
+      "pluginFilepath": "/home/justin/Documents/Udacity-Projects/front-end-nano/project_06/node_modules/gatsby/dist/internal-plugins/load-babel-config",
       "packageJson": {
-        "name": "component-layout-creator",
-        "description": "An internal Gatsby plugin that creates pages from component files in src/layouts",
+        "name": "load-babel-config",
+        "description": "Internal plugin that handles loading Babel configs",
         "version": "1.0.0",
         "main": "index.js",
-        "keywords": [
-          "gatsby",
-          "gatsby-plugin"
-        ],
         "author": "Kyle Mathews <mathews.kyle@gmail.com>",
         "license": "MIT",
         "dependencies": [],
@@ -90,7 +85,7 @@
       "parent": "SOURCE",
       "children": [],
       "internal": {
-        "contentDigest": "0194e4c0eba405ff265130592f67f7ad",
+        "contentDigest": "42f593b1f903936cb6ecfd855bd10848",
         "type": "SitePlugin",
         "owner": "internal-data-bridge"
       }
@@ -175,8 +170,7 @@
         "plugins": []
       },
       "nodeAPIs": [
-        "onCreatePage",
-        "onCreateLayout"
+        "onCreatePage"
       ],
       "browserAPIs": [],
       "ssrAPIs": [],
@@ -197,7 +191,7 @@
       "parent": "SOURCE",
       "children": [],
       "internal": {
-        "contentDigest": "27f01a1752f20177d3262b0266ec157b",
+        "contentDigest": "e3902bc99684d6e670a6cb167b6fb5d7",
         "type": "SitePlugin",
         "owner": "internal-data-bridge"
       }
@@ -206,7 +200,7 @@
       "resolve": "/home/justin/Documents/Udacity-Projects/front-end-nano/project_06/node_modules/gatsby-plugin-react-helmet",
       "id": "Plugin gatsby-plugin-react-helmet",
       "name": "gatsby-plugin-react-helmet",
-      "version": "2.0.11",
+      "version": "3.0.0",
       "pluginOptions": {
         "plugins": []
       },
@@ -219,7 +213,7 @@
       "packageJson": {
         "name": "gatsby-plugin-react-helmet",
         "description": "Manage document head data with react-helmet. Provides drop-in server rendering support for Gatsby.",
-        "version": "2.0.11",
+        "version": "3.0.0",
         "main": "index.js",
         "keywords": [
           "gatsby",
@@ -244,24 +238,28 @@
         "license": "MIT",
         "dependencies": [
           {
-            "name": "babel-runtime",
-            "version": "^6.26.0"
+            "name": "@babel/runtime",
+            "version": "^7.0.0"
           }
         ],
         "devDependencies": [
           {
-            "name": "babel-cli",
-            "version": "^6.26.0"
+            "name": "@babel/cli",
+            "version": "^7.0.0"
+          },
+          {
+            "name": "@babel/core",
+            "version": "^7.0.0"
           },
           {
             "name": "cross-env",
-            "version": "^5.0.5"
+            "version": "^5.1.4"
           }
         ],
         "peerDependencies": [
           {
             "name": "gatsby",
-            "version": "^1.0.0"
+            "version": ">2.0.0-alpha"
           },
           {
             "name": "react-helmet",
@@ -274,7 +272,179 @@
       "parent": "SOURCE",
       "children": [],
       "internal": {
-        "contentDigest": "36ec697bbe4d487b7e46069d987caa83",
+        "contentDigest": "848a5b1440d141f6c42de81b7ed76d4b",
+        "type": "SitePlugin",
+        "owner": "internal-data-bridge"
+      }
+    },
+    "Plugin gatsby-plugin-manifest": {
+      "resolve": "/home/justin/Documents/Udacity-Projects/front-end-nano/project_06/node_modules/gatsby-plugin-manifest",
+      "id": "Plugin gatsby-plugin-manifest",
+      "name": "gatsby-plugin-manifest",
+      "version": "2.0.2",
+      "pluginOptions": {
+        "plugins": [],
+        "name": "gatsby-starter-default",
+        "short_name": "starter",
+        "start_url": "/",
+        "background_color": "#663399",
+        "theme_color": "#663399",
+        "display": "minimal-ui",
+        "icon": "src/images/gatsby-icon.png"
+      },
+      "nodeAPIs": [
+        "onPostBootstrap"
+      ],
+      "browserAPIs": [],
+      "ssrAPIs": [
+        "onRenderBody"
+      ],
+      "pluginFilepath": "/home/justin/Documents/Udacity-Projects/front-end-nano/project_06/node_modules/gatsby-plugin-manifest",
+      "packageJson": {
+        "name": "gatsby-plugin-manifest",
+        "description": "Gatsby plugin which adds a manifest.webmanifest to make sites progressive web apps",
+        "version": "2.0.2",
+        "main": "index.js",
+        "keywords": [
+          "gatsby",
+          "gatsby-plugin",
+          "favicon",
+          "icons",
+          "manifest.webmanifest",
+          "progressive-web-app",
+          "pwa"
+        ],
+        "author": {
+          "name": "Kyle Mathews",
+          "email": "mathews.kyle@gmail.com"
+        },
+        "license": "MIT",
+        "dependencies": [
+          {
+            "name": "@babel/runtime",
+            "version": "^7.0.0"
+          },
+          {
+            "name": "bluebird",
+            "version": "^3.5.0"
+          },
+          {
+            "name": "sharp",
+            "version": "^0.20.2"
+          }
+        ],
+        "devDependencies": [
+          {
+            "name": "@babel/cli",
+            "version": "^7.0.0"
+          },
+          {
+            "name": "@babel/core",
+            "version": "^7.0.0"
+          },
+          {
+            "name": "cross-env",
+            "version": "^5.1.4"
+          }
+        ],
+        "peerDependencies": [
+          {
+            "name": "gatsby",
+            "version": ">2.0.0-alpha"
+          }
+        ],
+        "optionalDependecies": [],
+        "bundledDependecies": []
+      },
+      "parent": "SOURCE",
+      "children": [],
+      "internal": {
+        "contentDigest": "8519ea97cb05f0dff4c52b681e0f4fef",
+        "type": "SitePlugin",
+        "owner": "internal-data-bridge"
+      }
+    },
+    "Plugin gatsby-plugin-offline": {
+      "resolve": "/home/justin/Documents/Udacity-Projects/front-end-nano/project_06/node_modules/gatsby-plugin-offline",
+      "id": "Plugin gatsby-plugin-offline",
+      "name": "gatsby-plugin-offline",
+      "version": "2.0.5",
+      "pluginOptions": {
+        "plugins": []
+      },
+      "nodeAPIs": [
+        "createPages",
+        "onPostBuild"
+      ],
+      "browserAPIs": [
+        "registerServiceWorker",
+        "onPrefetchPathname",
+        "onServiceWorkerActive"
+      ],
+      "ssrAPIs": [],
+      "pluginFilepath": "/home/justin/Documents/Udacity-Projects/front-end-nano/project_06/node_modules/gatsby-plugin-offline",
+      "packageJson": {
+        "name": "gatsby-plugin-offline",
+        "description": "Gatsby plugin which sets up a site to be able to run offline",
+        "version": "2.0.5",
+        "main": "index.js",
+        "keywords": [
+          "gatsby",
+          "gatsby-plugin",
+          "offline",
+          "precache",
+          "service-worker"
+        ],
+        "author": {
+          "name": "Kyle Mathews",
+          "email": "mathews.kyle@gmail.com"
+        },
+        "license": "MIT",
+        "dependencies": [
+          {
+            "name": "@babel/runtime",
+            "version": "^7.0.0"
+          },
+          {
+            "name": "cheerio",
+            "version": "^1.0.0-rc.2"
+          },
+          {
+            "name": "lodash",
+            "version": "^4.17.10"
+          },
+          {
+            "name": "workbox-build",
+            "version": "^3.4.1"
+          }
+        ],
+        "devDependencies": [
+          {
+            "name": "@babel/cli",
+            "version": "^7.0.0"
+          },
+          {
+            "name": "@babel/core",
+            "version": "^7.0.0"
+          },
+          {
+            "name": "cross-env",
+            "version": "^5.1.4"
+          }
+        ],
+        "peerDependencies": [
+          {
+            "name": "gatsby",
+            "version": ">2.0.0-beta"
+          }
+        ],
+        "optionalDependecies": [],
+        "bundledDependecies": []
+      },
+      "parent": "SOURCE",
+      "children": [],
+      "internal": {
+        "contentDigest": "32bb2f173448edcd43de6a14aaf76394",
         "type": "SitePlugin",
         "owner": "internal-data-bridge"
       }
@@ -283,7 +453,7 @@
       "resolve": "/home/justin/Documents/Udacity-Projects/front-end-nano/project_06",
       "id": "Plugin default-site-plugin",
       "name": "default-site-plugin",
-      "version": "4995a7aac2bc3530ecbad97ae7b9998f",
+      "version": "3dac5c0080fc7e35102f911c1350d947",
       "pluginOptions": {
         "plugins": []
       },
@@ -311,23 +481,43 @@
           },
           {
             "name": "gatsby",
-            "version": "^1.9.277"
+            "version": "^2.0.0"
           },
           {
-            "name": "gatsby-link",
-            "version": "^1.6.46"
+            "name": "gatsby-cli",
+            "version": "^2.4.1"
+          },
+          {
+            "name": "gatsby-plugin-manifest",
+            "version": "^2.0.2"
+          },
+          {
+            "name": "gatsby-plugin-offline",
+            "version": "^2.0.5"
           },
           {
             "name": "gatsby-plugin-react-helmet",
-            "version": "^2.0.11"
+            "version": "^3.0.0"
+          },
+          {
+            "name": "react",
+            "version": "^16.5.1"
           },
           {
             "name": "react-beautiful-dnd",
             "version": "^9.0.2"
           },
           {
+            "name": "react-dom",
+            "version": "^16.5.1"
+          },
+          {
             "name": "react-helmet",
             "version": "^5.2.0"
+          },
+          {
+            "name": "react-rating",
+            "version": "^1.4.0"
           },
           {
             "name": "typeface-roboto",
@@ -336,12 +526,8 @@
         ],
         "devDependencies": [
           {
-            "name": "gatsby-cli",
-            "version": "^2.4.1"
-          },
-          {
             "name": "prettier",
-            "version": "^1.13.7"
+            "version": "^1.14.2"
           },
           {
             "name": "ramda",
@@ -350,18 +536,6 @@
           {
             "name": "ramda-adjunct",
             "version": "^2.10.0"
-          },
-          {
-            "name": "react",
-            "version": "^16.3.1"
-          },
-          {
-            "name": "react-dom",
-            "version": "^16.3.1"
-          },
-          {
-            "name": "webpack",
-            "version": "^1.15.0"
           }
         ],
         "peerDependencies": [],
@@ -371,7 +545,7 @@
       "parent": "SOURCE",
       "children": [],
       "internal": {
-        "contentDigest": "bb1c6eee1f61ba9341feced79d09aaa3",
+        "contentDigest": "1bdf5b23894c56546ff6a0fa77961b07",
         "type": "SitePlugin",
         "owner": "internal-data-bridge"
       }
@@ -380,7 +554,7 @@
       "resolve": "/home/justin/Documents/Udacity-Projects/front-end-nano/project_06/node_modules/gatsby-plugin-page-creator",
       "id": "Plugin gatsby-plugin-page-creator",
       "name": "gatsby-plugin-page-creator",
-      "version": "1.0.1",
+      "version": "2.0.0",
       "pluginOptions": {
         "plugins": [],
         "path": "/home/justin/Documents/Udacity-Projects/front-end-nano/project_06/src/pages",
@@ -395,7 +569,7 @@
       "packageJson": {
         "name": "gatsby-plugin-page-creator",
         "description": "Gatsby plugin that automatically creates pages from React components in specified directories",
-        "version": "1.0.1",
+        "version": "2.0.0",
         "main": "index.js",
         "keywords": [
           "gatsby",
@@ -408,8 +582,8 @@
         "license": "MIT",
         "dependencies": [
           {
-            "name": "babel-runtime",
-            "version": "^6.26.0"
+            "name": "@babel/runtime",
+            "version": "^7.0.0"
           },
           {
             "name": "bluebird",
@@ -420,12 +594,16 @@
             "version": "^1.7.0"
           },
           {
+            "name": "fs-exists-cached",
+            "version": "^1.0.0"
+          },
+          {
             "name": "glob",
             "version": "^7.1.1"
           },
           {
             "name": "lodash",
-            "version": "^4.17.4"
+            "version": "^4.17.10"
           },
           {
             "name": "parse-filepath",
@@ -438,22 +616,31 @@
         ],
         "devDependencies": [
           {
-            "name": "babel-cli",
-            "version": "^6.26.0"
+            "name": "@babel/cli",
+            "version": "^7.0.0"
+          },
+          {
+            "name": "@babel/core",
+            "version": "^7.0.0"
           },
           {
             "name": "cross-env",
             "version": "^5.0.5"
           }
         ],
-        "peerDependencies": [],
+        "peerDependencies": [
+          {
+            "name": "gatsby",
+            "version": ">2.0.0-alpha"
+          }
+        ],
         "optionalDependecies": [],
         "bundledDependecies": []
       },
       "parent": "SOURCE",
       "children": [],
       "internal": {
-        "contentDigest": "101c14d4aec3982b3953f49b792c4aa7",
+        "contentDigest": "3b0e8c85d767f4d7bdb42d0fc8e034ba",
         "type": "SitePlugin",
         "owner": "internal-data-bridge"
       }
@@ -466,19 +653,18 @@
       "host": "localhost",
       "pathPrefix": "",
       "polyfill": true,
-      "buildTime": "2018-09-19T07:31:26.642Z",
+      "buildTime": "2018-09-23T03:51:01.547Z",
       "id": "Site",
       "parent": "SOURCE",
       "children": [],
       "internal": {
-        "contentDigest": "f421e38ece4704306595b02f39eaca4a",
+        "contentDigest": "7b7450232b4f55d22fb827d0af96c733",
         "type": "Site",
         "owner": "internal-data-bridge"
       }
     },
     "SitePage /404/": {
-      "layout": "index",
-      "jsonName": "404.json",
+      "jsonName": "404-22d",
       "internalComponentName": "Component404",
       "path": "/404/",
       "component": "/home/justin/Documents/Udacity-Projects/front-end-nano/project_06/src/pages/404.js",
@@ -492,14 +678,13 @@
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "895f99b233e3f8701b44f75e1c1e558a",
+        "contentDigest": "aa15da3788ce684c8aac27d2238454cd",
         "description": "Plugin gatsby-plugin-page-creator",
         "owner": "internal-data-bridge"
       }
     },
     "SitePage /": {
-      "layout": "index",
-      "jsonName": "index.json",
+      "jsonName": "index",
       "internalComponentName": "ComponentIndex",
       "path": "/",
       "component": "/home/justin/Documents/Udacity-Projects/front-end-nano/project_06/src/pages/index.js",
@@ -513,14 +698,13 @@
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "5b62518cf33e205fb11ebebc9c001f4c",
+        "contentDigest": "e85cca21c4221958e650f594dcf51a3d",
         "description": "Plugin gatsby-plugin-page-creator",
         "owner": "internal-data-bridge"
       }
     },
     "SitePage /404.html": {
-      "layout": "index",
-      "jsonName": "404-html.json",
+      "jsonName": "404-html-516",
       "internalComponentName": "Component404Html",
       "path": "/404.html",
       "component": "/home/justin/Documents/Udacity-Projects/front-end-nano/project_06/src/pages/404.js",
@@ -534,7 +718,7 @@
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "693b03dc8aa9cdf15c11f748e3d6ab0a",
+        "contentDigest": "148811f354fc5e5627856e2f761f1feb",
         "description": "Plugin prod-404",
         "owner": "internal-data-bridge"
       }
@@ -542,18 +726,45 @@
   },
   "status": {
     "plugins": {},
-    "PLUGINS_HASH": "4c43b2751d90c23dc75f9e2fa0269d47"
+    "PLUGINS_HASH": "b1972c26ec39a43d799f5314c0d21c86"
   },
   "componentDataDependencies": {
     "nodes": {
       "Site": [
-        "LAYOUT___index"
+        "sq--src-components-layout-js"
       ]
     },
-    "connections": {
-      "SitePage": [
-        "/dev-404-page/"
-      ]
+    "connections": {}
+  },
+  "jsonDataPaths": {
+    "dev-404-page-5f9": "920/path---dev-404-page-5-f-9-fab-NZuapzHg3X9TaN1iIixfv1W23E",
+    "404-html-516": "164/path---404-html-516-62a-NZuapzHg3X9TaN1iIixfv1W23E",
+    "index": "173/path---index-6a9-NZuapzHg3X9TaN1iIixfv1W23E",
+    "404-22d": "44/path---404-22-d-bce-NZuapzHg3X9TaN1iIixfv1W23E",
+    "sq--src-components-layout-js": 1044757290
+  },
+  "components": {
+    "/home/justin/Documents/Udacity-Projects/front-end-nano/project_06/.cache/dev-404-page.js": {
+      "query": "",
+      "componentPath": "/home/justin/Documents/Udacity-Projects/front-end-nano/project_06/.cache/dev-404-page.js"
+    },
+    "/home/justin/Documents/Udacity-Projects/front-end-nano/project_06/src/pages/404.js": {
+      "query": "",
+      "componentPath": "/home/justin/Documents/Udacity-Projects/front-end-nano/project_06/src/pages/404.js"
+    },
+    "/home/justin/Documents/Udacity-Projects/front-end-nano/project_06/src/pages/index.js": {
+      "query": "",
+      "componentPath": "/home/justin/Documents/Udacity-Projects/front-end-nano/project_06/src/pages/index.js"
+    }
+  },
+  "staticQueryComponents": {
+    "sq--src-components-layout-js": {
+      "name": "SiteTitleQuery",
+      "componentPath": "/home/justin/Documents/Udacity-Projects/front-end-nano/project_06/src/components/layout.js",
+      "id": "sq--src-components-layout-js",
+      "jsonName": "sq--src-components-layout-js",
+      "query": "query SiteTitleQuery {\n  site {\n    siteMetadata {\n      title\n    }\n  }\n}\n",
+      "hash": 1044757290
     }
   }
 }

@@ -1,5 +1,9 @@
 import React from 'react'
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
+import DeleteIcon from '@material-ui/icons/Delete'
+import AddIcon from '@material-ui/icons/Add'
+import { Star, StarBorder } from '@material-ui/icons'
+import Rating from 'react-rating'
 
 import ActionButton from './actionbutton'
 
@@ -34,12 +38,16 @@ class BookList extends React.Component {
                         {...provided.dragHandleProps}
                         key={book.id}>
                         <h4>{book.title}</h4>
-                        <p>index: {index}</p>
-                        <p>id: {book.id}</p>
-                        <ActionButton
-                          action={deleteBook}
-                          params={book}>
-                          delete
+                        <Rating onChange={(rate) => alert(rate)}
+                                placeholderRating={book.rating}
+                                emptySymbol={<StarBorder />}
+                                placeholderSymbol={<Star color='primary' />}
+                                fullSymbol={<Star color='secondary' />}
+                                style='{position: "absolute", bottom: "0.1rem"}'/>
+                        <ActionButton action={deleteBook}
+                                      params={book}
+                                      ariaLabel='Delete'>
+                          <DeleteIcon />
                         </ActionButton>
                       </div>
                     )}
@@ -49,6 +57,13 @@ class BookList extends React.Component {
             </div>
           )}
         </Droppable>
+        <div className="add-button-container">
+        <ActionButton action={addBook}
+                      params=""
+                      ariaLabel='Add'>
+          <AddIcon />
+        </ActionButton>
+        </div>
       </div>
     )
   }

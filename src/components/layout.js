@@ -1,14 +1,17 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
+import { StaticQuery, graphql } from 'gatsby'
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 import { concat, compose, equals, filter, map, not, take, takeLast, unnest } from 'ramda'
 import { mergeProp } from 'ramda-adjunct'
+import CssBaseline from '@material-ui/core/CssBaseline'
+import 'typeface-roboto'
 
-import Header from '../components/header'
-import BookList from '../components/booklist'
-import Search from '../components/search'
-import './index.css'
+import BookList from './booklist'
+import Search from './search'
+import Header from './header'
+import './layout.css'
 
 // List names
 const BookLists = {
@@ -126,10 +129,11 @@ class Layout extends React.Component {
   }
 
   addBook = (book) => {
-    const books = concat(this.state.books, Array.of(book))
-    this.setState ({
-      books
-    })
+    // const books = concat(this.state.books, Array.of(book))
+    // this.setState ({
+    //   books
+    // })
+    alert('Adding a book..')
   }
 
   deleteBook = (book) => {
@@ -142,64 +146,69 @@ class Layout extends React.Component {
   render() {
     console.log(this.state)
     return (
-      <DragDropContext
-        onDragEnd={this.onDragEnd}>
+      <StaticQuery
+        query={graphql`
+          query SiteTitleQuery {
+            site {
+              siteMetadata {
+                title
+              }
+            }
+          }
+        `}
+        render={data => (
+          <>
+            <DragDropContext
+              onDragEnd={this.onDragEnd}>
+              <Helmet
+                title={data.site.siteMetadata.title}
+                meta={[
+                  { name: 'description', content: 'MyReads - Udacity Project' },
+                  { name: 'keywords', content: 'myreads, book, library, udacity, frontend nanodegree' },
+                ]}
+              >
+                <html lang="en" />
+              </Helmet>
+              <Header siteTitle={data.site.siteMetadata.title} />
+              <div className='flex-container'>
+                {/* List of books to be read */}
+                <BookList heading={BookLists.toReadList.heading}
+                          id={BookLists.toReadList.id}
+                          books={this.state.books}
+                          filter={bookToRead}
+                          addBook={this.addBook}
+                          deleteBook={this.deleteBook}>
+                </BookList>
 
-        <Helmet title={this.props.data.site.siteMetadata.title}
-          meta={[{
-                  name: 'description',
-                  content: 'MyReads - Udacity Project'
-                },
-                {
-                  name: 'keywords',
-                  content: 'myreads, book, library, udacity, frontend nanodegree'
-                }]}/>
+                {/* List of books currently being read */}
+                <BookList heading={BookLists.readingList.heading}
+                          id={BookLists.readingList.id}
+                          books={this.state.books}
+                          filter={bookReading}
+                          addBook={this.addBook}
+                          deleteBook={this.deleteBook}>
+                </BookList>
 
-        <Header siteTitle={this.props.data.site.siteMetadata.title}/>
-
-        <div className='flex-container'>
-          {/* List of books to be read */}
-          <BookList heading={BookLists.toReadList.heading}
-                    id={BookLists.toReadList.id}
-                    books={this.state.books}
-                    filter={bookToRead}
-                    addBook={this.addBook}
-                    deleteBook={this.deleteBook}>
-          </BookList>
-
-          {/* List of books currently being read */}
-          <BookList heading={BookLists.readingList.heading}
-                    id={BookLists.readingList.id}
-                    books={this.state.books}
-                    filter={bookReading}
-                    addBook={this.addBook}
-                    deleteBook={this.deleteBook}>
-          </BookList>
-
-          {/* List of books that have been read */}
-          <BookList heading={BookLists.readList.heading}
-                    id={BookLists.readList.id}
-                    books={this.state.books}
-                    filter={bookRead}
-                    addBook={this.addBook}
-                    deleteBook={this.deleteBook}>
-          </BookList>
-        </div>
-
-        {/* Leave props.children() here, this is passed from the page. */}
-        {this.props.children()}
-      </DragDropContext>)
+                {/* List of books that have been read */}
+                <BookList heading={BookLists.readList.heading}
+                          id={BookLists.readList.id}
+                          books={this.state.books}
+                          filter={bookRead}
+                          addBook={this.addBook}
+                          deleteBook={this.deleteBook}>
+                </BookList>
+              </div>
+              {/* Leave props.children() here, this is passed from the page. */}
+              {this.props.children}
+            </DragDropContext>
+          </>
+        )}
+      />)
   }
 }
 
-export default Layout
+// Layout.propTypes = {
+//   children: PropTypes.node.isRequired,
+// }
 
-export const query = graphql `
-  query SiteTitleQuery {
-    site {
-      siteMetadata {
-        title
-      }
-    }
-  }
-`
+export default Layout

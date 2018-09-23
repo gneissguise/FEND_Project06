@@ -1,13 +1,8 @@
 import React from 'react'
-import Link from 'gatsby-link'
-import CssBaseline from '@material-ui/core/CssBaseline'
-import 'typeface-roboto'
+import { Link } from 'gatsby'
 
-const IndexPage = () => (
-  <React.Fragment>
-  <CssBaseline />
-  <div></div>
-</React.Fragment>
-)
+import Layout from '../components/layout'
+
+const IndexPage = () => (<Layout></Layout>)
 
 export default IndexPage
