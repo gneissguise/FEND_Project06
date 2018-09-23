@@ -653,12 +653,12 @@
       "host": "localhost",
       "pathPrefix": "",
       "polyfill": true,
-      "buildTime": "2018-09-23T03:51:01.547Z",
+      "buildTime": "2018-09-23T04:20:22.675Z",
       "id": "Site",
       "parent": "SOURCE",
       "children": [],
       "internal": {
-        "contentDigest": "7b7450232b4f55d22fb827d0af96c733",
+        "contentDigest": "72e79ea1fcf4a274951ce13eeae6d2d6",
         "type": "Site",
         "owner": "internal-data-bridge"
       }

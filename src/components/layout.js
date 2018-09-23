@@ -65,6 +65,7 @@ class Layout extends React.Component {
     this.onDragEnd = this.onDragEnd.bind(this);
     this.addBook = this.addBook.bind(this);
     this.deleteBook = this.deleteBook.bind(this);
+    this.updateRating = this.updateRating.bind(this);
   }
 
   // onDragEnd() is called when the list item's dragging event is complete.
@@ -143,6 +144,18 @@ class Layout extends React.Component {
     })
   }
 
+  updateRating = (book, rating) => {
+    const books = this.state.books.map(b => {
+                                              if(b.id === book.id) {
+                                                b.rating = rating
+                                              }
+                                              return b
+                                            })
+    this.setState ({
+      books
+    })
+  }
+
   render() {
     console.log(this.state)
     return (
@@ -177,7 +190,8 @@ class Layout extends React.Component {
                           books={this.state.books}
                           filter={bookToRead}
                           addBook={this.addBook}
-                          deleteBook={this.deleteBook}>
+                          deleteBook={this.deleteBook}
+                          updateRating={this.updateRating}>
                 </BookList>
 
                 {/* List of books currently being read */}
@@ -186,7 +200,8 @@ class Layout extends React.Component {
                           books={this.state.books}
                           filter={bookReading}
                           addBook={this.addBook}
-                          deleteBook={this.deleteBook}>
+                          deleteBook={this.deleteBook}
+                          updateRating={this.updateRating}>
                 </BookList>
 
                 {/* List of books that have been read */}
@@ -195,7 +210,8 @@ class Layout extends React.Component {
                           books={this.state.books}
                           filter={bookRead}
                           addBook={this.addBook}
-                          deleteBook={this.deleteBook}>
+                          deleteBook={this.deleteBook}
+                          updateRating={this.updateRating}>
                 </BookList>
               </div>
               {/* Leave props.children() here, this is passed from the page. */}

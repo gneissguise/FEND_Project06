@@ -11,11 +11,13 @@ class BookList extends React.Component {
   constructor(props) {
     super(props)
 
-    console.log(props)
+    this.handleRatingChange = this.handleRatingChange.bind(this)
   }
 
+  handleRatingChange = (book, rating) => this.props.updateRating(book, rating)
+
   render() {
-    const { heading, id, filter, books, addBook, deleteBook, children } = this.props
+    const { heading, id, filter, books, addBook, deleteBook, updateRating, children } = this.props
 
     return (
       <div className='book-list-wrapper'>
@@ -38,7 +40,7 @@ class BookList extends React.Component {
                         {...provided.dragHandleProps}
                         key={book.id}>
                         <h4>{book.title}</h4>
-                        <Rating onChange={(rate) => alert(rate)}
+                        <Rating onChange={(rating) => this.handleRatingChange(book, rating)}
                                 placeholderRating={book.rating}
                                 emptySymbol={<StarBorder />}
                                 placeholderSymbol={<Star color='primary' />}
