@@ -11,6 +11,7 @@ import 'typeface-roboto'
 import BookList from './booklist'
 import Search from './search'
 import Header from './header'
+import FormDialog from './formdialog'
 import './layout.css'
 
 // List names
@@ -58,7 +59,9 @@ class Layout extends React.Component {
           status: BookLists.toReadList,
           img: { url: '', alt: '' }
         }
-      ]
+      ],
+      openDialog: false,
+      addBookList: null
     }
 
     // Binding 'this' scope onto class properties
@@ -66,6 +69,8 @@ class Layout extends React.Component {
     this.addBook = this.addBook.bind(this);
     this.deleteBook = this.deleteBook.bind(this);
     this.updateRating = this.updateRating.bind(this);
+    this.openDialog = this.openDialog.bind(this);
+    this.closeDialog = this.closeDialog.bind(this);
   }
 
   // onDragEnd() is called when the list item's dragging event is complete.
@@ -130,11 +135,11 @@ class Layout extends React.Component {
   }
 
   addBook = (book) => {
-    // const books = concat(this.state.books, Array.of(book))
-    // this.setState ({
-    //   books
-    // })
-    alert('Adding a book..')
+    const books = concat(this.state.books, Array.of(book))
+
+    this.setState ({
+      books
+    })
   }
 
   deleteBook = (book) => {
@@ -156,8 +161,21 @@ class Layout extends React.Component {
     })
   }
 
+  openDialog = (id) => {
+    this.setState({
+      openDialog: true,
+      addBookList: BookLists[id]
+    })
+  }
+
+  closeDialog = () => {
+    this.setState({
+      openDialog: false,
+      addBookList: null
+    })
+  }
+
   render() {
-    console.log(this.state)
     return (
       <StaticQuery
         query={graphql`
@@ -191,7 +209,8 @@ class Layout extends React.Component {
                           filter={bookToRead}
                           addBook={this.addBook}
                           deleteBook={this.deleteBook}
-                          updateRating={this.updateRating}>
+                          updateRating={this.updateRating}
+                          openDialog={this.openDialog}>
                 </BookList>
 
                 {/* List of books currently being read */}
@@ -201,7 +220,8 @@ class Layout extends React.Component {
                           filter={bookReading}
                           addBook={this.addBook}
                           deleteBook={this.deleteBook}
-                          updateRating={this.updateRating}>
+                          updateRating={this.updateRating}
+                          openDialog={this.openDialog}>
                 </BookList>
 
                 {/* List of books that have been read */}
@@ -211,9 +231,15 @@ class Layout extends React.Component {
                           filter={bookRead}
                           addBook={this.addBook}
                           deleteBook={this.deleteBook}
-                          updateRating={this.updateRating}>
+                          updateRating={this.updateRating}
+                          openDialog={this.openDialog}>
                 </BookList>
               </div>
+              <FormDialog
+                          dialogState={this.state.openDialog}
+                          closeDialog={this.closeDialog}
+                          addBook={this.addBook}
+                          bookList={this.state.addBookList} />
               {/* Leave props.children() here, this is passed from the page. */}
               {this.props.children}
             </DragDropContext>

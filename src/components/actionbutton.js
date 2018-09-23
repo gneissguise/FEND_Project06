@@ -8,9 +8,7 @@ class ActionButton extends React.Component {
     this.handleClick = this.handleClick.bind(this)
   }
 
-  handleClick(e) {
-    this.props.action(this.props.params)
-  }
+  handleClick = (e) => this.props.action(this.props.params)
 
   render() {
     return (

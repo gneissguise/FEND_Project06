@@ -8,52 +8,84 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
 export default class FormDialog extends React.Component {
-  state = {
-    open: false,
-  };
+  constructor(props) {
+    super(props)
 
-  handleClickOpen = () => {
-    this.setState({ open: true });
-  };
+    this.state = {
+      id: '',
+      title: '',
+      author: '',
+      description: '',
+      rating: 0,
+      status: null,
+      img: { url: '', alt: '' }
+    }
 
-  handleClose = () => {
-    this.setState({ open: false });
-  };
+    this.handleClose = this.handleClose.bind(this)
+    this.handleAdd = this.handleAdd.bind(this)
+    this.handleChange = this.handleChange.bind(this)
+  }
+
+  handleClose = () => this.props.closeDialog()
+
+  handleChange = (e) => this.setState ({ [e.target.id]: e.target.value })
+
+  handleAdd = () => {
+    const book = {
+      id: this.state.id,
+      title: this.state.title,
+      author: this.state.author,
+      description: this.state.description,
+      rating: this.state.rating,
+      status: this.props.bookList,
+      img: this.state.img
+    }
+
+    this.props.addBook(book)
+    this.props.closeDialog()
+  }
 
   render() {
     return (
-      <div>
-        <Button onClick={this.handleClickOpen}>Open form dialog</Button>
+      <>
         <Dialog
-          open={this.state.open}
-          onClose={this.handleClose}
-          aria-labelledby="form-dialog-title"
-        >
-          <DialogTitle id="form-dialog-title">Subscribe</DialogTitle>
+                open={this.props.dialogState}
+                onClose={this.handleClose}
+                aria-labelledby="form-dialog-title">
+          <DialogTitle id="form-dialog-title">Add Book</DialogTitle>
           <DialogContent>
             <DialogContentText>
-              To subscribe to this website, please enter your email address here. We will send
-              updates occasionally.
+              Add a new book to your list:
             </DialogContentText>
             <TextField
-              autoFocus
-              margin="dense"
-              id="name"
-              label="Email Address"
-              type="email"
-              fullWidth
-            />
+                       autoFocus
+                       margin="dense"
+                       id="title"
+                       label="Title"
+                       type="text"
+                       fullWidth
+                       value={this.state.title}
+                       onChange={this.handleChange} />
+             <TextField
+                        margin="dense"
+                        id="author"
+                        label="Author"
+                        type="text"
+                        fullWidth
+                        value={this.state.author}
+                        onChange={this.handleChange} />
+
           </DialogContent>
           <DialogActions>
             <Button onClick={this.handleClose} color="primary">
               Cancel
             </Button>
-            <Button onClick={this.handleClose} color="primary">
-              Subscribe
+            <Button onClick={this.handleAdd} color="primary">
+              Add
             </Button>
           </DialogActions>
         </Dialog>
-      </div>
-    );
+      </>
+    )
   }
 }

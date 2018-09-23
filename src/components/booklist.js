@@ -17,7 +17,15 @@ class BookList extends React.Component {
   handleRatingChange = (book, rating) => this.props.updateRating(book, rating)
 
   render() {
-    const { heading, id, filter, books, addBook, deleteBook, updateRating, children } = this.props
+    const { heading,
+            id,
+            filter,
+            books,
+            addBook,
+            deleteBook,
+            updateRating,
+            openDialog,
+            children } = this.props
 
     return (
       <div className='book-list-wrapper'>
@@ -60,8 +68,8 @@ class BookList extends React.Component {
           )}
         </Droppable>
         <div className="add-button-container">
-        <ActionButton action={addBook}
-                      params=""
+        <ActionButton action={openDialog}
+                      params={id}
                       ariaLabel='Add'>
           <AddIcon />
         </ActionButton>
