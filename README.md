@@ -26,18 +26,17 @@ This is my submission to the Udacity Front End Nanodegree's book tracking app pr
     From the project directory, run the following command to start it up.
 
     ```sh
-    gatsby develop
+    npm start
     ```
 
 4.  **Open your browser and navigate to the application**
 
-    Your site is now running at `http://localhost:8000`!
+    Your site is now running at `http://localhost:3000`!
 
 ## 🧐 What's inside?
 
-  1.  **`Gatsby`**: This project is using Gatsby in lieu of create-react-app as the baseline react application.  Gatsby is a static
-  site generator utilizing the react ecosystem.  It can compile a site statically and serve it up, resulting in a fast application!
-  [See gatsbyjs.org for more details](https://www.gatsbyjs.org/)  
+  1.  **`create-react-app`**: This project was created using create-react-app by facebook.
+  [create-react-app](https://github.com/facebook/create-react-app)  
 
   2.  **`Material UI`**: The ui is styled using the material-ui react package. [material-ui](https://material-ui.com/)
 
@@ -48,8 +47,10 @@ This is my submission to the Udacity Front End Nanodegree's book tracking app pr
   5.  **`Rating`**: Star rating provided by react-rating. [react-rating](https://www.npmjs.com/package/react-rating)
 
   6.  **`BooksAPI`**: Book search API provided by Udacity! [BooksAPI](https://github.com/udacity/reactnd-project-myreads-starter/blob/master/src/BooksAPI.js)
+  
+  7.  **`Ramda.js`**: List updating and filtering was done using Ramda.js following a functional programming pattern. [Ramda.js](https://ramdajs.com/)
 
-  7.  **`LICENSE`**: { myreads } is licensed under the MIT license.
+  8.  **`LICENSE`**: { myreads } is licensed under the MIT license.
 
 ## 🎓 Usage Instructions
 
