@@ -1,5 +1,5 @@
 import React from 'react'
-import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
+import { Droppable, Draggable } from 'react-beautiful-dnd'
 import DeleteIcon from '@material-ui/icons/Delete'
 import AddIcon from '@material-ui/icons/Add'
 import { Star, StarBorder } from '@material-ui/icons'
@@ -25,11 +25,12 @@ class BookList extends React.Component {
             id,
             filter,
             books,
-            addBook,
+            // addBook,
             deleteBook,
-            updateRating,
+            // updateRating,
             openDialog,
-            children } = this.props
+            // children 
+          } = this.props
 
     return (
       <div className='book-list-wrapper'>
@@ -65,7 +66,7 @@ class BookList extends React.Component {
                                 emptySymbol={<StarBorder />}
                                 placeholderSymbol={<Star color='primary' />}
                                 fullSymbol={<Star color='secondary' />}
-                                style='{position: "absolute", bottom: "0.1rem"}'/>
+                                style={{position: "absolute", bottom: "0.1rem"}}/>
                         <ActionButton action={deleteBook}
                                       params={book}
                                       ariaLabel='Delete'>

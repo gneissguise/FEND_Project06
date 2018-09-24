@@ -7,7 +7,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
-import { get, getAll, update, search } from './books-api'
+import { search } from './books-api'
 
 // Function to map api to book object for layout.js
 const mapToBook = (r, list) => {
@@ -25,7 +25,7 @@ const mapToBook = (r, list) => {
 }
 
 // Function/Component to render searched books
-let SearchResult = ({ result, selectBook, list }) => {
+const SearchResult = ({ result, selectBook, list }) => {
   if (result.length > 0) {
     return (
       result.map((r) => {
@@ -44,9 +44,8 @@ let SearchResult = ({ result, selectBook, list }) => {
             </div>)
         } catch (e) {
           console.log('Error:', e)
-        } finally {
-
-        }
+          return false
+        }      
       })
       )
     }
@@ -63,25 +62,30 @@ export default class FormDialog extends React.Component {
     this.state = {
       searchInput: '',
       searchResults: [],
-      selectedBook: {},
-      searchDivClass: 'result'
+      selectedBook: {}
     }
 
     this.handleClose = this.handleClose.bind(this)
     this.handleAdd = this.handleAdd.bind(this)
     this.handleChange = this.handleChange.bind(this)
     this.selectBook = this.selectBook.bind(this)
+    this.clearForm = this.clearForm.bind(this)
   }
 
   // Closes the search window
-  handleClose = () => this.props.closeDialog()
+  handleClose = () => {
+    this.props.closeDialog()
+    this.clearForm()
+  }
 
   // Handles the input value change, and also runs the search from the API!
   handleChange = (e) => {
     const searchInput = e.target.value.trim()
     if (searchInput.length > 0) {
       search(searchInput).then((result) => {
-        if(!result.error){
+        console.log('Search result:', result)
+        if(!result.hasOwnProperty('error')){
+          console.log('No error, set state')
           this.setState({ searchResults: result.map((r) => {
                                                               if (!r.hasOwnProperty('selected')) {
                                                                 r.selected = false
@@ -89,6 +93,7 @@ export default class FormDialog extends React.Component {
                                                               return r
                                                             })
                         })
+                        console.log('State:', this.state)
         }
       }, (err) => {
         alert(`The following error occured: ${err}`)
@@ -99,12 +104,14 @@ export default class FormDialog extends React.Component {
     }
 
     this.setState({ [e.target.id]: e.target.value })
+    console.log('State:', this.state)
   }
 
   // Handles adding a book, passing up the state
   handleAdd = () => {
     this.props.addBook(this.state.selectedBook)
     this.props.closeDialog()
+    this.clearForm()
   }
 
   // Toggles if a book is selected
@@ -125,10 +132,18 @@ export default class FormDialog extends React.Component {
     })
   }
 
+  clearForm = () => {
+    this.setState({
+      searchInput: '',
+      searchResults: [],
+      selectedBook: {}
+    })
+  }
+
   // Renders the dialog / search form
   render() {
     return (
-      <>
+      <React.Fragment>
         <Dialog
                 open={this.props.dialogState}
                 onClose={this.handleClose}
@@ -162,7 +177,7 @@ export default class FormDialog extends React.Component {
             </Button>
           </DialogActions>
         </Dialog>
-      </>
+      </React.Fragment>
     )
   }
 }

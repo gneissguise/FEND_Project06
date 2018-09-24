@@ -1,8 +1,6 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
-import { StaticQuery, graphql } from 'gatsby'
-import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
+import { DragDropContext } from 'react-beautiful-dnd'
 import { concat, compose, equals, filter, map, not, take, takeLast, unnest } from 'ramda'
 import { mergeProp } from 'ramda-adjunct'
 import CssBaseline from '@material-ui/core/CssBaseline'
@@ -148,22 +146,11 @@ class Layout extends React.Component {
 
   render() {
     return (
-      <StaticQuery
-        query={graphql`
-          query SiteTitleQuery {
-            site {
-              siteMetadata {
-                title
-              }
-            }
-          }
-        `}
-        render={data => (
-          <>
-            <DragDropContext
+             <DragDropContext
               onDragEnd={this.onDragEnd}>
+              <CssBaseline />
               <Helmet
-                title={data.site.siteMetadata.title}
+                title="{ myreads }"
                 meta={[
                   { name: 'description', content: 'MyReads - Udacity Project' },
                   { name: 'keywords', content: 'myreads, book, library, udacity, frontend nanodegree' },
@@ -171,7 +158,7 @@ class Layout extends React.Component {
               >
                 <html lang="en" />
               </Helmet>
-              <Header siteTitle={data.site.siteMetadata.title} />
+              <Header siteTitle="{ myreads }" />
               <div className='flex-container'>
                 {/* List of books to be read */}
                 <BookList heading={BookLists.toReadList.heading}
@@ -214,14 +201,7 @@ class Layout extends React.Component {
               {/* Leave props.children() here, this is passed from the page. */}
               {this.props.children}
             </DragDropContext>
-          </>
-        )}
-      />)
-  }
+    )}
 }
-
-// Layout.propTypes = {
-//   children: PropTypes.node.isRequired,
-// }
 
 export default Layout
