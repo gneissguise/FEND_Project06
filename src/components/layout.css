@@ -650,6 +650,7 @@ div.book-list {
   padding: 0.25rem;
 }
 div.book {
+  display: flex;
   width: 100%;
   height: 4rem;
   background-color: ghostwhite;
@@ -671,21 +672,79 @@ div.book button {
   right: 0;
   bottom: 0;
 }
+div.book img {
+  margin: 0;
+  padding: 0;
+}
 div[role="group"] {
   margin: auto;
   max-width: 960px;
 }
 div.add-button-container {
-  /* position: absolute;
-  bottom: 0; */
   width: 100%;
   text-align: center;
 }
-div.add-button-conntainer > button {
+div.add-button-container > button {
 
+}
+div.scrollable {
+  width: 77vh;
+  overflow-y: auto;
+  height: 12rem;
+}
+div.scrollable div.result {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin: 0.3rem 0;
+}
+div.scrollable div.result:hover, div.scrollable div.selected {
+  background-color: honeydew;
+}
+div.scrollable div.result img {
+  height: 4.5rem;
+  margin: 0 0.5rem 0 0;
+  -webkit-box-shadow: 0.19rem 0.19rem 0.19rem 0 rgba(0, 0, 0, 0.33);
+  -moz-box-shadow: 0.19rem 0.19rem 0.19rem 0 rgba(0, 0, 0, 0.33);
+  box-shadow: 0.19rem 0.19rem 0.19rem 0 rgba(0, 0, 0, 0.33);
+}
+div.scrollable div.result img + div {
+  flex: 1;
+  padding: 1rem;
+}
+div.scrollable div.result img + div p {
+  font-size: 0.75rem;
+  margin: 0;
+}
+div.scrollable div.result h5 {
+  margin-bottom: 0.3rem;
+}
+div.scrollable div.result em {
+  margin-bottom: 0.3rem;
+  font-size: 0.7rem;
 }
 @media only screen and (max-width: 480px) {
   html {
     font-size: 100%;
+  }
+  div.flex-container {
+    flex-direction: column;
+  }
+  div.book-list-wrapper {
+    width: 95%;
+  }
+  div.book-list-wrapper > header {
+    padding: 0.25rem 0 0.25rem 0;
+    border-top-left-radius: 0.05rem;
+    border-top-right-radius: 0.05rem;
+  }
+  div.book-list-wrapper > header > h2 {
+    margin-bottom: 0;
+    text-align: center;
+    vertical-align: bottom;
+    font-size: 1rem;
+  }
+  div.book-list {
+    min-height: 10rem;
   }
 }

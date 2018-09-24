@@ -9,7 +9,6 @@ import CssBaseline from '@material-ui/core/CssBaseline'
 import 'typeface-roboto'
 
 import BookList from './booklist'
-import Search from './search'
 import Header from './header'
 import FormDialog from './formdialog'
 import './layout.css'
@@ -31,35 +30,7 @@ class Layout extends React.Component {
     super(props)
 
     this.state = {
-      books: [
-        {
-          id: 'to-kill-a-mockingbird',
-          title: 'To Kill A Mockingbird',
-          author: 'Harper Lee',
-          description: 'Blah blah blah',
-          rating: 5,
-          status: BookLists.toReadList,
-          img: { url: '', alt: '' }
-        },
-        {
-          id: 'slaugherhouse-five',
-          title: 'Slaughterhouse Five',
-          author: 'Kurt Vonnegut',
-          description: 'Blah blah blah',
-          rating: 5,
-          status: BookLists.toReadList,
-          img: { url: '', alt: '' }
-        },
-        {
-          id: 'the-lord-of-the-rings',
-          title: 'The Lord of the Rings',
-          author: 'Tolkein',
-          description: 'Blah blah blah',
-          rating: 5,
-          status: BookLists.toReadList,
-          img: { url: '', alt: '' }
-        }
-      ],
+      books: [],
       openDialog: false,
       addBookList: null
     }

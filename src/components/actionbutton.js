@@ -1,6 +1,8 @@
 import React from 'react'
 import IconButton from '@material-ui/core/IconButton'
 
+// My nifty component to handle generic buttons with a
+// callback and parameters passed through props.. it works well!
 class ActionButton extends React.Component {
   constructor(props) {
     super(props)

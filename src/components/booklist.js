@@ -4,9 +4,11 @@ import DeleteIcon from '@material-ui/icons/Delete'
 import AddIcon from '@material-ui/icons/Add'
 import { Star, StarBorder } from '@material-ui/icons'
 import Rating from 'react-rating'
+import Avatar from '@material-ui/core/Avatar';
 
 import ActionButton from './actionbutton'
 
+// Creates a list for books to go into
 class BookList extends React.Component {
   constructor(props) {
     super(props)
@@ -14,8 +16,10 @@ class BookList extends React.Component {
     this.handleRatingChange = this.handleRatingChange.bind(this)
   }
 
+  // Handles the star rating change.
   handleRatingChange = (book, rating) => this.props.updateRating(book, rating)
 
+  // Renders the list to the screen, and iterates through the book list
   render() {
     const { heading,
             id,
@@ -47,7 +51,15 @@ class BookList extends React.Component {
                         {...provided.draggableProps}
                         {...provided.dragHandleProps}
                         key={book.id}>
+                        <Avatar alt={book.img.alt}
+                                src={book.img.url}
+                                style={{ height: '3.25rem',
+                                         width: '3.25rem',
+                                         margin: '0 0.3rem 0 0',
+                                         padding: '0' }} />
+                        <span>
                         <h4>{book.title}</h4>
+                        <p><em>By {book.author}</em></p>
                         <Rating onChange={(rating) => this.handleRatingChange(book, rating)}
                                 placeholderRating={book.rating}
                                 emptySymbol={<StarBorder />}
@@ -59,6 +71,7 @@ class BookList extends React.Component {
                                       ariaLabel='Delete'>
                           <DeleteIcon />
                         </ActionButton>
+                      </span>
                       </div>
                     )}
                   </Draggable>
