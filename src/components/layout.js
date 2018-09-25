@@ -23,12 +23,22 @@ const bookToRead = (book) => book.status.id === BookLists.toReadList.id
 const bookReading = (book) => book.status.id === BookLists.readingList.id
 const bookRead = (book) => book.status.id === BookLists.readList.id
 
+const updateCache = (books) => {
+  localStorage.setItem('myreads', JSON.stringify(books))
+}
+
 class Layout extends React.Component {
   constructor(props) {
     super(props)
 
+    let books = null;
+
+    if (localStorage.getItem('myreads') !== null) {
+      books = JSON.parse(localStorage.getItem('myreads'))
+    }
+
     this.state = {
-      books: [],
+      books: books || [],
       openDialog: false,
       addBookList: null
     }
@@ -98,6 +108,8 @@ class Layout extends React.Component {
       condInject(readListId, booksRead)
     ])
 
+    updateCache(books)
+
     this.setState({
       books
     })
@@ -106,6 +118,8 @@ class Layout extends React.Component {
   addBook = (book) => {
     const books = concat(this.state.books, Array.of(book))
 
+    updateCache(books)
+
     this.setState ({
       books
     })
@@ -113,6 +127,9 @@ class Layout extends React.Component {
 
   deleteBook = (book) => {
     const books = this.state.books.filter(b => b.id !== book.id)
+
+    updateCache(books)
+
     this.setState ({
       books
     })
@@ -125,6 +142,8 @@ class Layout extends React.Component {
                                               }
                                               return b
                                             })
+    updateCache(books)
+
     this.setState ({
       books
     })

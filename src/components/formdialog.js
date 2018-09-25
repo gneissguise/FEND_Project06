@@ -11,7 +11,6 @@ import { search } from './books-api'
 
 // Function to map api to book object for layout.js
 const mapToBook = (r, list) => {
-  console.log(r)
   return {
     id: r.id,
     title: r.title,
@@ -45,7 +44,7 @@ const SearchResult = ({ result, selectBook, list }) => {
         } catch (e) {
           console.log('Error:', e)
           return false
-        }      
+        }
       })
       )
     }
@@ -83,9 +82,7 @@ export default class FormDialog extends React.Component {
     const searchInput = e.target.value.trim()
     if (searchInput.length > 0) {
       search(searchInput).then((result) => {
-        console.log('Search result:', result)
         if(!result.hasOwnProperty('error')){
-          console.log('No error, set state')
           this.setState({ searchResults: result.map((r) => {
                                                               if (!r.hasOwnProperty('selected')) {
                                                                 r.selected = false
@@ -93,7 +90,6 @@ export default class FormDialog extends React.Component {
                                                               return r
                                                             })
                         })
-                        console.log('State:', this.state)
         }
       }, (err) => {
         alert(`The following error occured: ${err}`)
@@ -104,7 +100,6 @@ export default class FormDialog extends React.Component {
     }
 
     this.setState({ [e.target.id]: e.target.value })
-    console.log('State:', this.state)
   }
 
   // Handles adding a book, passing up the state

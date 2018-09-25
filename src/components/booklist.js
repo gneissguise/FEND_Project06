@@ -25,11 +25,8 @@ class BookList extends React.Component {
             id,
             filter,
             books,
-            // addBook,
             deleteBook,
-            // updateRating,
-            openDialog,
-            // children 
+            openDialog
           } = this.props
 
     return (
